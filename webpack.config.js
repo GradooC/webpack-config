@@ -2,11 +2,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
+const imgSizeLimit = 10000;
+
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'inline-source-map',
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: '/node_modules/'
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -16,16 +23,15 @@ module.exports = {
                         options: {
                             modules: {
                                 auto: true,
-                                localIdentName: '[local]--[hash:base64:5]',
+                                localIdentName: '[local]--[hash:base64:5]'
                             }
                         }
                     }
                 ]
             },
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: '/node_modules/'
+                test: [/\.jpe?g$/, /\.png$/],
+                use: [{ loader: 'url-loader', options: { limit: imgSizeLimit } }]
             }
         ]
     },
