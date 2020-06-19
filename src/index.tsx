@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import App from './App';
+import App from './App';
 
-const App = () => <div>App</div>;
-
-export default App;
+import './index.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
