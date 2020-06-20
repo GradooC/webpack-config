@@ -1,6 +1,6 @@
 import React from 'react';
+import Image from "./components/Image";
 import style from './style.module.css';
-import natureImg from './assets/nature.jpg';
 
 const App = () => {
     const [counter, setCounter] = React.useState(0);
@@ -8,8 +8,10 @@ const App = () => {
         <>
             <div className={style.block}>App</div>
             <div>{counter}</div>
-            <button onClick={() => setCounter(counter + 1)}>+</button>
-            <img src={natureImg}></img>
+            <div>
+                <button onClick={() => setCounter(counter + 1)}>+</button>
+            </div>
+            <Image />
         </>
     );
 };

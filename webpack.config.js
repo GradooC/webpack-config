@@ -5,8 +5,10 @@ const path = require('path');
 const imgSizeLimit = 10000;
 
 module.exports = {
+    mode: 'development',
+
     entry: './src/index.tsx',
-    devtool: 'inline-source-map',
+    devtool: 'eval-cheap-module-source-map',
     module: {
         rules: [
             {
