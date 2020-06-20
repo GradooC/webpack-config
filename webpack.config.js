@@ -9,6 +9,9 @@ module.exports = {
 
     entry: './src/index.tsx',
     devtool: 'eval-cheap-module-source-map',
+    devServer: {
+        hot: true
+    },
     module: {
         rules: [
             {
