@@ -33,7 +33,12 @@ module.exports = {
             },
             {
                 test: [/\.jpe?g$/, /\.png$/],
-                use: [{ loader: 'url-loader', options: { limit: imgSizeLimit } }]
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: { limit: imgSizeLimit, name: '[name].[ext]' }
+                    }
+                ]
             }
         ]
     },
