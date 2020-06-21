@@ -6,7 +6,7 @@ const App: React.FC = () => {
     const [counter, setCounter] = React.useState(0);
     return (
         <>
-            <div className={style.block}>App</div>
+            <div className={style.blockDiv}>App</div>
             <div>{counter}</div>
             <div>
                 <button onClick={() => setCounter(counter + 1)}>+</button>
