@@ -1,3 +1,5 @@
+declare module 'react-hot-loader/root';
+
 declare module '*.svg' {
     const content: string;
     export default content;

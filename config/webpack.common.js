@@ -1,18 +1,31 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const imgSizeLimit = 10000;
 const appDirectory = process.cwd();
 
 module.exports = {
     // Указываем входную точку для сборки.
-    entry: './src/index.tsx',
+    entry: path.resolve(appDirectory, 'src', 'index.tsx'),
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: '/node_modules/'
+                include: [path.resolve(appDirectory, 'src')],
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        babelrc: false,
+                        presets: [
+                            ['@babel/preset-env', { targets: { browsers: 'last 2 versions' } }],
+                            '@babel/preset-typescript',
+                            '@babel/preset-react'
+                        ],
+                        plugins: ['react-hot-loader/babel']
+                    }
+                }
             },
             {
                 test: /\.css$/,
@@ -58,6 +71,8 @@ module.exports = {
     },
     plugins: [
         // Автоматически создаёт в выходной директории html файл на основании шаблона index.ejs.
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin(),
+        // Проверяет типы вместо ts-loader-а.
+        new ForkTsCheckerWebpackPlugin()
     ]
 };
