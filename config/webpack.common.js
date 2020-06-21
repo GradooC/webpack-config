@@ -1,17 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const imgSizeLimit = 10000;
+const appDirectory = process.cwd();
 
 module.exports = {
-    mode: 'development',
-
+    // Указываем входную точку для сборки.
     entry: './src/index.tsx',
-    devtool: 'eval-cheap-module-source-map',
-    devServer: {
-        hot: true
-    },
     module: {
         rules: [
             {
@@ -26,6 +21,8 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
+                            // Также импортируем идентификаторы классов в виде camelCase (помимо kebab-case)
+                            localsConvention: 'camelCase',
                             modules: {
                                 auto: true,
                                 localIdentName: '[local]--[hash:base64:5]'
@@ -46,11 +43,17 @@ module.exports = {
         ]
     },
     resolve: {
+        // Устанавливаем расширения, которые будут подставляться автоматически.
         extensions: ['.tsx', '.ts', '.js']
     },
     output: {
+        // Указываем название выходного файла.
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        // Указываем путь, куда будет класться выходной файл.
+        path: path.resolve(appDirectory, 'build')
     },
-    plugins: [new HtmlWebpackPlugin(), new CleanWebpackPlugin()]
+    plugins: [
+        // Автоматически создаёт в выходной директории html файл на основании шаблона index.ejs.
+        new HtmlWebpackPlugin()
+    ]
 };

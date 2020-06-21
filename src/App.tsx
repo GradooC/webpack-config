@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from "./components/Image";
+import Image from './components/Image';
 import style from './style.module.css';
 
-const App = () => {
+const App: React.FC = () => {
     const [counter, setCounter] = React.useState(0);
     return (
         <>
