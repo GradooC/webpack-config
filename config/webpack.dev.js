@@ -8,6 +8,6 @@ module.exports = merge(common, {
     devtool: 'eval-cheap-module-source-map',
     devServer: {
         // Включаем поддержку hot module replacement
-        hot: true
-    }
+        hot: true,
+    },
 });

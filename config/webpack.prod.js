@@ -9,6 +9,6 @@ module.exports = merge(common, {
     devtool: 'source-map',
     plugins: [
         // Очищает выходную директорию при каждой сборке.
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+    ],
 });
