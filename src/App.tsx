@@ -1,11 +1,12 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { hot } from 'react-hot-loader/root';
 import Image from './components/Image';
 import Spinner from './components/Spinner';
 import { addTwo } from './utils';
 import style from './style.module.css';
 
-const App: React.FC = (props) => {
+const App: React.FC = () => {
     const [counter, setCounter] = React.useState(0);
     const res = addTwo(counter);
     return (
@@ -14,7 +15,9 @@ const App: React.FC = (props) => {
             <div>{counter}</div>
             <Spinner />
             <div>
-                <button onClick={() => setCounter(counter + 1)}>+</button>
+                <button type="button" onClick={() => setCounter(counter + 1)}>
+                    +
+                </button>
             </div>
             <p>Hi there!!!!</p>
             <p>Add two result {res}</p>
