@@ -9,19 +9,27 @@ import style from './style.module.css';
 const App: React.FC = () => {
     const [counter, setCounter] = React.useState(0);
     const res = addTwo(counter);
+    const hasSpinner = true;
+
+    const renderImage = () => <Image />;
+
+    const handleFunc = () => {
+        setCounter(counter + 1);
+    };
+
     return (
         <>
             <div className={style.blockDiv}>App</div>
             <div>{counter}</div>
-            <Spinner />
+            {hasSpinner && <Spinner />}
             <div>
-                <button type="button" onClick={() => setCounter(counter + 1)}>
+                <button type="button" onClick={handleFunc}>
                     +
                 </button>
             </div>
             <p>Hi there!!!!</p>
             <p>Add two result {res}</p>
-            <Image />
+            {renderImage()}
         </>
     );
 };
