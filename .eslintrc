@@ -11,6 +11,31 @@
         "project": "./tsconfig.json"
     },
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": "warn",
+        "react/jsx-handler-names": [
+            "warn",
+            {
+                "eventHandlerPrefix": "handle",
+                "eventHandlerPropPrefix": "on",
+                "checkLocalVariables": true
+            }
+        ],
+        "react/jsx-sort-props": [
+            "warn",
+            {
+                "ignoreCase": true,
+                "callbacksLast": true,
+                "shorthandFirst": true
+            }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+                "selector": "variable",
+                "types": ["boolean"],
+                "format": ["PascalCase"],
+                "prefix": ["is", "should", "has", "can", "did", "will"]
+            }
+        ]
     }
 }
