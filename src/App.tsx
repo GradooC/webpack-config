@@ -3,6 +3,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Image from './components/Image';
 import Spinner from './components/Spinner';
+import Checkbox from './components/Checkbox';
 import { addTwo } from './utils';
 import style from './style.module.css';
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
     return (
         <>
             <div className={style.blockDiv}>App</div>
+            <Checkbox />
             <div>{counter}</div>
             {hasSpinner && <Spinner />}
             <div>
